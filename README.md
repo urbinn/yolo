@@ -19,6 +19,35 @@ make # Will run on CPU. For GPU support, scroll down!
 ./darknet detector test cfg/combine9k.data cfg/yolo9000.cfg ../yolo9000-weights/yolo9000.weights data/horses.jpg
 ```
 
+
+#### run_yolo.py
+Script for running images trough yolo in bulk, with centralized config and json data output.
+Images get rendered by custom python method. Output of script can be found in `~/output/{{timestamp}}/`.
+
+
+#/output/{{timestamp}}/#
+*data/:* output folder for detected images
+*objects.json:* JSON file containing plain text descriptions of images in the following format:
+>[
+  [
+   "0000000145.png",     (Source image)
+    [
+      "auto",                 (Class)
+      0.8570160865783691,     (confidence)
+      [
+        1089.9854736328125,   (X-coordinate center of bounding-box)
+        370.7843322753906,    (Y-coordinate center of bounding-box)
+        490.1993408203125,    (Width of bounding-box)
+        227.81167602539062    (Height of bounding-box)
+      ]
+    ],
+  ]
+>]
+
+
+#### darknet.py
+Deprecated python 2.x version of run_yolo
+
 ### Mac OS
 ```
 git clone --recursive https://github.com/philipperemy/yolo-9000.git
